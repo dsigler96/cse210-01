@@ -8,11 +8,6 @@ class Parachute:
         self._lives = 4
         self._parachute = ""
         #We would have to put the parachute image above
-        
-
-    def fill_spot(self, guess):
-        #Takes guess and checks if it adds any correct letters
-        return
 
     def cut_line(self):
         #Removes a line from parachute if guess doesn't give a new letter
