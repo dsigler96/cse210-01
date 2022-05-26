@@ -23,7 +23,7 @@ class Director:
         self._service.read_letter(self._guess.get_guess())
         self._service.print_list(self._parachute.get_parachute())
         letter = input(self._prompt)
-        self._guess.get_letter(letter)
+        self._guess.set_letter(letter)
 
     def do_updates(self):
         self._guess.update_guess(self._parachute.get_word())

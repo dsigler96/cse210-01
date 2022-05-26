@@ -24,7 +24,7 @@ class Guess:
     def get_guess(self):
         return self._guess
 
-    def get_letter(self, letter):
+    def set_letter(self, letter):
         self._letter = letter
     
     def get_cut(self):
