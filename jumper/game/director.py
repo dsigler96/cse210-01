@@ -8,6 +8,8 @@ class Director:
         self._guess = Guess()
         self._parachute = Parachute()
         self._service = Service()
+        self._prompt = "Guess a letter [a-z]: "
+        self._game_over = "Game Over"
 
 
     def start_game(self):
@@ -17,17 +19,20 @@ class Director:
             self.do_outputs()
 
     def get_inputs(self):
-        #Shows guess status
-        #Shows parachute status
-        #prompts guess
-        return
+        self._service.show_guess(self._guess)
+        self._service.show_parachute(self._parachute)
+        letter = input(self._prompt)
+        self._guess.get_letter(letter)
 
     def do_updates(self):
-        #Checks if letter was in word
-        return
+        self._guess.update_guess(self._parachute)
 
     def do_outputs(self):
-        #Updates lives accordingly
-        #Updates parachute image
-        #Checks if game is over
-        return
+        if self._parachute.get_lives == 0:
+            self._service.read_letter(self._game_over)
+            self._service.show_parachute(self._parachute)
+            self._is_playing = False
+        elif self._guess.check_guess:
+            self._is_playing = False
+        else:
+            return
