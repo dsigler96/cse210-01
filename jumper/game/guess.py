@@ -1,7 +1,3 @@
-
-from xmlrpc.client import FastMarshaller
-
-
 class Guess:
 
     def __init__(self):
