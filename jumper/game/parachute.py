@@ -3,18 +3,17 @@ import random
 class Parachute:
 
     def __init__(self):
-        self._word_list = ["abuse","adult","agent","anger","apple","award","basis","beach","birth","block","blood","board","brain","bread","break","brown","buyer","cause",
-                           "chain","chair","chest","chief","child","china","claim","class","clock","coach","coast","court","cover","cream","crime","cross","crowd","crown",
-                           "cycle","dance","death","depth","doubt","draft","drama","dream","dress","drink","drive","earth","enemy","entry","error","event","faith","fault",
-                           "field","fight","final","floor","focus","force","frame","frank","front","fruit","glass","grant","grass","green","group","guide","heart","henry",
-                           "horse","hotel","house","image","index","input","issue","japan","jones","judge","knife","laura","layer","level","lewis","light","limit","lunch",
-                           "major","march","match","metal","model","money","month","motor","mouth","music","night","noise","north","novel","nurse","offer","order","other",
-                           "owner","panel","paper","party","peace","peter","phase","phone","piece","pilot","pitch","place","plane","plant","plate","point","pound","power",
-                           "press","price","pride","prize","proof","queen","radio","range","ratio","reply","right","river","round","route","rugby","scale","scene","scope",
-                           "score","sense","shape","share","sheep","sheet","shift","shirt","shock","sight","simon","skill","sleep","smile","smith","smoke","sound","south",
-                           "space","speed","spite","sport","squad","staff","stage","start","state","steam","steel","stock","stone","store","study","stuff","style","sugar",
-                           "youth","table","taste","terry","theme","thing","title","total","touch","tower","track","trade","train","trend","trial","trust","truth","uncle",
-                           "union","unity","value","video","visit","voice","waste","watch","water","while","white","whole","woman","world","youth"]
+        self._word_list = ["abuse","adult","agent","anger","award","beach","birth","block","board","brain","bread","break","brown","buyer","cause","chain","chair",
+                           "chest","chief","child","china","claim","clock","coach","coast","court","cover","cream","crime","crowd","crown","dance","death","depth",
+                           "doubt","draft","dream","drink","drive","earth","entry","faith","fault","field","fight","final","focus","force","frame","frank","front",
+                           "fruit","grant","green","group","guide","heart","henry","horse","hotel","house","image","index","input","japan","jones","judge","knife",
+                           "laura","layer","lewis","light","lunch","major","march","match","metal","model","money","month","mouth","music","night","noise","north",
+                           "novel","nurse","order","other","owner","panel","party","peace","phase","phone","piece","pilot","pitch","place","plane","plant","plate",
+                           "point","pound","power","price","pride","prize","queen","radio","range","ratio","reply","right","river","round","route","rugby","scale",
+                           "scope","score","shape","share","shift","shirt","shock","sight","simon","smile","smith","smoke","sound","south","space","spite","sport",
+                           "squad","stage","start","state","steam","stock","stone","store","study","style","sugar","youth","table","thing","touch","tower","track",
+                           "trade","train","trend","trial","trust","truth","uncle","unity","value","video","visit","voice","waste","watch","water","while","white",
+                           "whole","woman","world","youth"]
         self._word = self._word_list[random.randint(0, (len(self._word_list) - 1))]
         self._lives = 4
         self._parachute = [ "  ___",
@@ -26,16 +25,24 @@ class Parachute:
                             "  / \\",
                             "      ",
                             "^^^^^^^"]
-        self._game_over = '''
-   X
-  /|\\
-  / \\
-     
-^^^^^^^'''
+        self._game_over = ["   X",
+                           "  /|\\",
+                           "  / \\",
+                           "^^^^^^^"]
 
-    def cut_line(self):
-        self._lives = self._lives - 1
-        return 
+
+    def cut_line(self, cut):
+        if cut == "T":
+            self._lives = self._lives - 1
+            self._parachute.pop(0)
+        else:
+            return 
+
+    def get_parachute(self):
+        if self._lives >= 1:
+            return self._parachute
+        else:
+            return self._game_over
 
     def get_lives(self):
         return self._lives

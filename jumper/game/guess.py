@@ -1,25 +1,34 @@
 
+from xmlrpc.client import FastMarshaller
+
+
 class Guess:
 
     def __init__(self):
-        self._guess  = "_ _ _ _ _"
+        self._guess  = "_ _ _ _ _\n"
         self._letter = ""
+        self._cut = "F"
+    
+    def update_guess(self, word):
+        if self._letter in word:
+            index = word.index(self._letter)
+            self._guess = self._guess[:(index * 2)] + self._letter + self._guess[(index * 2) + 1:]
+            self._cut = "F"
+        else:
+            self._cut = "T"
+
+
+    def check_guess(self, word):
+        return ((self._guess.replace(" ", "")) == word)
+
+    def get_guess(self):
+        return self._guess
 
     def get_letter(self, letter):
         self._letter = letter
     
-    def update_guess(self, parachute):
-        word = parachute.get_word()
-        if self._letter in word:
-            index = word.index(self._letter)
-            self._guess = self._guess[:(index * 2)] + self._letter + self._guess[(index * 2) + 1:]
-        else:
-            parachute.cut_line()
+    def get_cut(self):
+        return self._cut
 
-    def check_guess(self, parachute):
-        return ((self._guess.replace(" ", "")) == parachute.get_word())
-
-    def get_guess(self):
-        return self._guess
 
     
