@@ -47,12 +47,5 @@ class Parachute:
     def get_lives(self):
         return self._lives
 
-    def get_parachute(self):
-        return self._parachute
-    
-    def get_game_over(self):
-        return self._game_over
-
     def get_word(self):
         return self._word
-    
