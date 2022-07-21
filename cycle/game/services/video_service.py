@@ -1,5 +1,6 @@
 import pyray
 import constants
+import random
 
 
 class VideoService:
@@ -54,7 +55,7 @@ class VideoService:
             actors (list): A list of actors to draw.
         """ 
         for actor in actors:
-            self.draw_actor(actor, centered)
+            self.draw_actor(actor, random)
     
     def flush_buffer(self):
         """Copies the buffer contents to the screen. This method should be called at the end of
